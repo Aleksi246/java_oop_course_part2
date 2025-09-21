@@ -12,8 +12,8 @@
 
     <modules>
             <module>module6_1</module>
-        <module>module6_2</module>
-        <module>module6_3</module>
+            <module>module6_2</module>
+            <module>module6_3</module>
 
     </modules>
 
@@ -30,6 +30,7 @@
         <dependency> <groupId>org.openjfx</groupId> <artifactId>javafx-fxml</artifactId> <version>20.0.1</version> </dependency>
         <dependency> <groupId>org.openjfx</groupId> <artifactId>javafx-controls</artifactId> <version>20.0.1</version> </dependency>
     </dependencies>
+
 
 
 </project>
