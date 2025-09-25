@@ -19,6 +19,26 @@ public class CurDao {
         em.persist(cur);
         em.getTransaction().commit();
     }
+    public BigDecimal getConv(String ab) {
+        EntityManager em = datasource.MdbConnection.getInstance();
+        Currency cur = em.find(Currency.class, ab);
+        BigDecimal d = cur.getConversion_rate_to_EUR();
+
+        return d;
+    }
+
+    public List<String> getAllAb() {
+        EntityManager em = datasource.MdbConnection.getInstance();
+        List<String> abs = em.createQuery("select c.abbreviation from Currency c").getResultList();
+        return abs;
+    }
+
+    public void update(Currency cur) {
+        EntityManager em = datasource.MdbConnection.getInstance();
+        em.getTransaction().begin();
+        em.merge(cur);
+        em.getTransaction().commit();
+    }
 
 }
 

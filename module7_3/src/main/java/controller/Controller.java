@@ -1,10 +1,12 @@
 package controller;
 
 import dao.CurDao;
+import entity.Currency;
 import view.View;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Set;
 
 public class Controller {
@@ -23,8 +25,12 @@ public class Controller {
         return (bto.multiply(amountOfFrom)).divide(bfrom, RoundingMode.HALF_UP);
     }
 
-    public static Set getKeys(){
+    public static List getKeys(){
         return curdao.getAllAb();
+    }
+
+    public void update(Currency cur){
+        curdao.update(cur);
     }
 
 }

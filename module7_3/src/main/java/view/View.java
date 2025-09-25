@@ -2,6 +2,7 @@ package view;
 
 
 import controller.Controller;
+import dao.CurDao;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import entity.Currency;
 import java.math.BigDecimal;
+
+import java.util.List;
 import java.util.Set;
 
 public class View extends Application {
@@ -28,10 +32,12 @@ public class View extends Application {
         Label result = new Label("0");
         Button convert = new Button("convert");
 
+        Button add = new Button("+");
+
         Label equals = new Label(" = ");
         Label error = new Label();
 
-        Set<String> copy = Controller.getKeys();
+        List<String> copy = Controller.getKeys();
 
         for(String key: copy){
             choiceBoxFrom.getItems().add(key);
@@ -49,6 +55,7 @@ public class View extends Application {
         pane.add(choiceBoxTo,4,1);
 
         pane.add(convert,5,1);
+        pane.add(add,6,1);
 
         pane.add(error,0,2);
 
@@ -76,6 +83,70 @@ public class View extends Application {
                     return;
                 }
 
+
+            }
+        });
+
+        add.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                Stage newStage = new Stage();
+
+                Button addtodatabase = new Button("add to database");
+                TextField conversionratetoeur = new TextField();
+                conversionratetoeur.setPromptText("conversion rate ro EUR");
+                TextField abriviation = new TextField();
+                abriviation.setPromptText("abreviation");
+                TextField name = new TextField();
+                name.setPromptText("name of currency");
+
+                Label error2 = new Label();
+
+                GridPane pane2 = new GridPane();
+
+                pane2.add(conversionratetoeur,1,0);
+                pane2.add(abriviation,2,0);
+                pane2.add(name,3,0);
+                pane2.add(addtodatabase,4,0);
+                pane2.add(error2,1,1);
+
+                Scene newscene = new Scene(pane2);
+                newStage.setScene(newscene);
+
+                newStage.setWidth(500);
+                newStage.show();
+
+                addtodatabase.setOnAction(new EventHandler<ActionEvent>() {
+                    public void handle(ActionEvent event) {
+                        String ab = abriviation.getText();
+                        String na = name.getText();
+                        String bds =conversionratetoeur.getText();
+
+                        if(ab == "" || na == "" || bds == ""){
+                            error2.setText("fill all boxes!!!");
+                            return;
+                        }
+                        try {
+                            BigDecimal bd = new BigDecimal(bds);
+                            Currency cur = new Currency(abriviation.getText(),name.getText(),bd);
+                            controller.update(cur);
+
+                        }catch(Exception e){
+                            error2.setText("conversion rate wrong format");
+                            return;
+                        }
+
+
+                        List<String> copy = Controller.getKeys();
+
+                        for(String key: copy){
+                            choiceBoxFrom.getItems().add(key);
+                            choiceBoxTo.getItems().add(key);
+                        }
+                        newStage.close();
+
+
+                    }
+                });
 
             }
         });

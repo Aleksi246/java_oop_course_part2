@@ -32,4 +32,4 @@ DROP USER IF EXISTS 'appuser'@'localhost';
 
 CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'password';
 
-GRANT SELECT ON currency.* TO 'appuser'@'localhost';
+GRANT SELECT,INSERT ON currency.* TO 'appuser'@'localhost';
