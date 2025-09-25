@@ -2,7 +2,6 @@ package controller;
 
 import dao.CurDao;
 import view.View;
-import entity.Currency;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
