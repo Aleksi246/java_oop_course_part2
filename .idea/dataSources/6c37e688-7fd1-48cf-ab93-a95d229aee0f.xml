@@ -164,8 +164,13 @@
 |root||root|::1|grant option|G
 |root||root|desktop-6im0lf0|grant option|G
 |root||root|localhost|grant option|G
-currency|schema||appuser|localhost|INSERT|G
-currency|schema||appuser|localhost|SELECT|G</Grants>
+currency2|schema||appuser|localhost|ALTER|G
+currency2|schema||appuser|localhost|CREATE|G
+currency2|schema||appuser|localhost|DELETE|G
+currency2|schema||appuser|localhost|DROP|G
+currency2|schema||appuser|localhost|INSERT|G
+currency2|schema||appuser|localhost|SELECT|G
+currency2|schema||appuser|localhost|UPDATE|G</Grants>
       <ServerVersion>12.0.2</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
@@ -1497,65 +1502,68 @@ currency|schema||appuser|localhost|SELECT|G</Grants>
     <schema id="555" parent="1" name="currency">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-09-25.03:45:02</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-10-02.11:24:27</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </schema>
-    <schema id="556" parent="1" name="information_schema">
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </schema>
-    <schema id="557" parent="1" name="mysql">
+    <schema id="556" parent="1" name="currency2">
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </schema>
-    <schema id="558" parent="1" name="performance_schema">
+    <schema id="557" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="559" parent="1" name="sys">
+    <schema id="558" parent="1" name="mysql">
+      <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
+    </schema>
+    <schema id="559" parent="1" name="performance_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <user id="560" parent="1" name="appuser">
+    <schema id="560" parent="1" name="sys">
+      <CollationName>utf8mb3_general_ci</CollationName>
+    </schema>
+    <user id="561" parent="1" name="appuser">
       <Host>localhost</Host>
     </user>
-    <user id="561" parent="1" name="mariadb.sys">
+    <user id="562" parent="1" name="mariadb.sys">
       <Host>localhost</Host>
-    </user>
-    <user id="562" parent="1" name="root">
-      <Host>127.0.0.1</Host>
     </user>
     <user id="563" parent="1" name="root">
-      <Host>::1</Host>
+      <Host>127.0.0.1</Host>
     </user>
     <user id="564" parent="1" name="root">
-      <Host>desktop-6im0lf0</Host>
+      <Host>::1</Host>
     </user>
     <user id="565" parent="1" name="root">
+      <Host>desktop-6im0lf0</Host>
+    </user>
+    <user id="566" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="566" parent="555" name="currency">
+    <table id="567" parent="555" name="currency">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <column id="567" parent="566" name="abbreviation">
+    <column id="568" parent="567" name="abbreviation">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>varchar(3)|0s</StoredType>
     </column>
-    <column id="568" parent="566" name="name">
+    <column id="569" parent="567" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="569" parent="566" name="conversion_rate_to_EUR">
+    <column id="570" parent="567" name="conversion_rate_to_EUR">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>decimal(10,6 digit)|0s</StoredType>
     </column>
-    <index id="570" parent="566" name="PRIMARY">
+    <index id="571" parent="567" name="PRIMARY">
       <ColNames>abbreviation</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="571" parent="566" name="PRIMARY">
+    <key id="572" parent="567" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

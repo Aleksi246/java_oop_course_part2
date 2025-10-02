@@ -1,7 +1,9 @@
 package controller;
 
 import dao.CurDao;
+import dao.TranDao;
 import entity.Currency;
+import entity.Transaction;
 import view.View;
 
 import java.math.BigDecimal;
@@ -12,6 +14,7 @@ import java.util.Set;
 public class Controller {
     private View view;
     static CurDao curdao = new CurDao();
+    static TranDao trandao = new TranDao();
 
 
     public Controller(View view){
@@ -31,6 +34,10 @@ public class Controller {
 
     public void update(Currency cur){
         curdao.update(cur);
+    }
+
+    public void updatet(Transaction tra){
+        trandao.update(tra);
     }
 
 }

@@ -3,6 +3,7 @@ package view;
 
 import controller.Controller;
 import dao.CurDao;
+import entity.Transaction;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,6 +25,13 @@ public class View extends Application {
     private Controller controller;
 
     public void start(Stage stage){
+
+        Currency cur1 = new Currency("USD","united states dollar",new BigDecimal("1.0"));
+        controller.update(cur1);
+        Currency cur2 = new Currency("EUR","euro",new BigDecimal("0.85"));
+        controller.update(cur2);
+        Currency cur3 = new Currency("GBP","pound sterling",new BigDecimal("0.74"));
+        controller.update(cur3);
 
         ChoiceBox<String> choiceBoxFrom = new ChoiceBox<>();
         ChoiceBox<String> choiceBoxTo = new ChoiceBox<>();
@@ -77,6 +85,8 @@ public class View extends Application {
                 try{
                     BigDecimal amountdouble = new BigDecimal(amount.getText());
                     result.setText((controller.getAmount(from,to,amountdouble)).toString());
+                    Transaction tra = new Transaction((amount.getText() + " " + from + " = " + (controller.getAmount(from,to,amountdouble)).toString() + " " + to));
+                    controller.updatet(tra);
                     error.setText("");
                 }catch(Exception e){
                     error.setText("input a double!");
@@ -137,6 +147,8 @@ public class View extends Application {
 
 
                         List<String> copy = Controller.getKeys();
+                        choiceBoxFrom.getItems().clear();
+                        choiceBoxTo.getItems().clear();
 
                         for(String key: copy){
                             choiceBoxFrom.getItems().add(key);

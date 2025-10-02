@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/module7_1/src/currency_setup.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/module7_1/src/queries.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/module7_1/src/test/currency2_setup.sql" dialect="MariaDB" />
   </component>
 </project>
